@@ -1,0 +1,13 @@
+{
+  "folders": [
+	{
+		"path": "../../../WorkSpace In Java"
+	},
+	{
+		"path": "../.."
+	}
+],
+  "settings": {
+    "vsintellicode.modify.editor.suggestSelection": "enabled"
+  }
+}
