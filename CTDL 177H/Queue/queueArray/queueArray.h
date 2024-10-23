@@ -11,7 +11,7 @@ typedef struct{
 //Make a null queue
 void makeNullQueue(Queue *queue){ 
     queue->front = 0;
-    queue->rear = 0;
+    queue->rear = -1;
 }
 
 int emptyQueue(Queue queue){
@@ -57,7 +57,7 @@ int deQueue(Queue *queue){
 
 void printQueue(Queue queue){
     for(int i = queue.front; i <= queue.rear; i++){
-        printf("%d ", queue.element[i]);
+        printf("%d %d %d", queue.element[i], queue.front, queue.rear);
     }
     printf("\n");
 }
