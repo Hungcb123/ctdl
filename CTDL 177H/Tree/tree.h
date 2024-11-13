@@ -4,7 +4,7 @@
 typedef int DataType;
 
 typedef struct NodeTag{
-    DataType data;
+    DataType key;
     struct NodeTag *left;
     struct NodeTag *right;
 }Node;
@@ -25,3 +25,4 @@ Tree create(DataType v, Tree l, Tree r){
     
     return N;
 }
+
