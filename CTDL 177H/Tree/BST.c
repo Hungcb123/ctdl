@@ -14,14 +14,14 @@ void makeNull(Tree *pT){
     (*pT)  = NULL;
 }
 
-Tree createTree(DataType v, Tree l, Tree r){
-    Tree N;
-    N = (struct Node*)malloc(sizeof(struct Node));
-    N->key  = v;
-    N->left  = l;
-    N->right = r;
-    return N;
-}
+// Tree createTree(DataType v, Tree l, Tree r){
+//     Tree N;
+//     N = (struct Node*)malloc(sizeof(struct Node));
+//     N->key  = v;
+//     N->left  = l;
+//     N->right = r;
+//     return N;
+// }
 
 Tree leftChild(Tree tr){
     if(tr != NULL)
@@ -137,6 +137,60 @@ Tree readTree(){
         insertNode(value, &tr);
     }
     return tr;
+}
+
+Tree deleteMin(Tree *tr){
+    if((*tr)->left == NULL){
+        return (*tr)->left;
+    }
+    else{
+        deleteMin((*tr)->left);
+    }
+}
+
+// DataType deleteMax(Tree *tr){
+//     if((*tr)->left == NULL){
+//         Tree temp = *tr;
+//         DataType res = (*tr)->key;
+//         (*tr) = (*tr)->left;
+//         free(temp);
+//         return res;
+//     }
+//     else{
+//         deleteMax1((*tr)->right);
+//     }
+// }
+
+void deteleNode(DataType x, Tree *tr){
+    if((*tr) != NULL){
+        if(x < (*tr)->key){
+            deteleNode(x, (*tr)->left);
+        }
+        else if(x > (*tr)->right){
+            deteleNode(x, (*tr)->right);
+        }
+        else{
+            //equals 
+            if((*tr)->left == NULL && (*tr)->right == NULL){
+                Tree temp = tr;
+                tr = NULL;
+                free(temp);
+            }
+            else if((*tr)->left != NULL){
+                Tree temp = (*tr);
+                (*tr) = (*tr)->left;
+                free(temp);
+            }
+            else if((*tr)->right != NULL){
+                Tree temp = (*tr);
+                (*tr) = (*tr)->right;
+                free(temp);
+            }
+            else{
+                (*tr)->
+            }
+        }
+    }
 }
 
 int main(){
