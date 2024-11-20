@@ -144,7 +144,7 @@ Tree deleteMin(Tree *tr){
         return (*tr)->left;
     }
     else{
-        deleteMin((*tr)->left);
+        deleteMin(&(*tr)->left);
     }
 }
 
@@ -164,30 +164,37 @@ Tree deleteMin(Tree *tr){
 void deteleNode(DataType x, Tree *tr){
     if((*tr) != NULL){
         if(x < (*tr)->key){
-            deteleNode(x, (*tr)->left);
+            //seach node left
+            deteleNode(x, &(*tr)->left);
         }
-        else if(x > (*tr)->right){
-            deteleNode(x, (*tr)->right);
+        else if(x > (*tr)->key){
+            //seach node right
+            deteleNode(x, &(*tr)->right);
         }
         else{
             //equals 
             if((*tr)->left == NULL && (*tr)->right == NULL){
-                Tree temp = tr;
+                Tree temp = *tr;
                 tr = NULL;
                 free(temp);
             }
-            else if((*tr)->left != NULL){
-                Tree temp = (*tr);
-                (*tr) = (*tr)->left;
-                free(temp);
-            }
-            else if((*tr)->right != NULL){
+            else if((*tr)->left == NULL){
                 Tree temp = (*tr);
                 (*tr) = (*tr)->right;
                 free(temp);
             }
+            else if((*tr)->right == NULL){
+                Tree temp = (*tr);
+                (*tr) = (*tr)->left;
+                free(temp);
+            }
             else{
-                (*tr)->
+                Tree temp = (*tr)->left;
+                Tree freeTr1 = (*tr);
+                Tree temp1 = deleteMin(&(*tr)->right);
+                (*tr) = temp1;
+                free(freeTr1);
+                (*tr)->left = temp;
             }
         }
     }
@@ -206,4 +213,8 @@ int main(){
     // insertNode('9', &tr);
     tr = readTree();
     inOrder(tr);
+    printf("de :"); int de; scanf("%d", &de);
+    deteleNode(de, &tr);
+    inOrder(tr);
+
 }
