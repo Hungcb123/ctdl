@@ -148,19 +148,6 @@ Tree deleteMin(Tree *tr){
     }
 }
 
-// DataType deleteMax(Tree *tr){
-//     if((*tr)->left == NULL){
-//         Tree temp = *tr;
-//         DataType res = (*tr)->key;
-//         (*tr) = (*tr)->left;
-//         free(temp);
-//         return res;
-//     }
-//     else{
-//         deleteMax1((*tr)->right);
-//     }
-// }
-
 void deteleNode(DataType x, Tree *tr){
     if((*tr) != NULL){
         if(x < (*tr)->key){

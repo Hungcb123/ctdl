@@ -15,14 +15,11 @@ void makeNull(Tree *pT){
     pT = NULL;
 }
 
-Tree create(DataType v, Tree l, Tree r){
-    Tree N;
-    N = (Tree)malloc(sizeof(Node));
-
-    N->data = v;
-    N->left = l;
-    N->right = r;
-    
-    return N;
+int get_height(Tree t){
+    if(t == NULL){
+        return -1;
+    }
+    int left = get_height(t->left) + 1;
+    int right = get_height(t->right) + 1;
+    return left>right?left:right;
 }
-
